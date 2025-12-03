@@ -1,0 +1,21 @@
+<h1>レシピ新規投稿</h1>
+
+<%= form_with model: @recipe, url: recipes_path do |form| %>
+
+  <div>
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, "作り方" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+　　
+　　<p>
+    <%= form.submit "レシピを投稿する", data: { disable_with: "投稿中..." } %>
+   </p>
+
+<% end %>

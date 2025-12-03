@@ -1,0 +1,22 @@
+<h1>レシピ一覧</h1>
+
+<%= link_to '新しいレシピを投稿する', new_recipe_path %> <% @recipes.each do |recipe| %>
+  <div>
+    <h2><%= recipe.title %></h2>
+    <p>材料: <%= recipe.ingredinents %></p> <p>手順: <%= recipe.instructions %></p>  <p>作成者ID: <%= recipe.user_id %></p>
+    <hr>
+  </div>  
+<% end %>
+
+<% if @recipes.empty? %>
+  <p>まだレシピがありません</p>
+<% else %>  
+  <% @recipes.each do |recipe| %>
+    <div>
+      <h2><%= recipe.title %></h2>
+      <p>材料: <%= recipe.ingredients %></p>
+      <p>手順: <%= recipe.instructions %></p>
+      <hr>
+    </div>
+  <% end %>
+<% end %>  
