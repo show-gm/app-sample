@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   def create
     # 正しいロジック：インスタンス作成後、saveを試みる
     # レシピ作成者（current_user）を紐づける処理を追加しても良いですが、今回はシンプルに保存のみを実装します。
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
       # 保存に成功したら一覧画面へリダイレクト
