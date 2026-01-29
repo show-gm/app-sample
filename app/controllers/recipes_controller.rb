@@ -27,6 +27,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    recipe = Recipe.find(params[:id])
+    # 投稿者本人かチェック（セキュリティのため）
+    if recipe.user_id == current_user.id
+      recipe.destroy
+      redirect_to recipes_path, notice: "レシピを削除しました"
+    else
+      redirect_to recipes_path, alert: "権限がありません"
+    end
+  end
+
   private
   
   def recipe_params
