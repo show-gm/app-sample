@@ -1,6 +1,13 @@
-<%= User.first.name %>
+<% if current_user %>
+  <p>ようこそ <%= current_user.name %> さん</p>
+<% end %>
 
-<h1>レシピ一覧</h1>
+
+<% if user_signed_in? %>  
+  <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+<% end %>
+
+<h1>Your Recipes</h1>
 
 <%= link_to '新しいレシピを投稿する', new_recipe_path %> <% @recipes.each do |recipe| %>
   <div>
