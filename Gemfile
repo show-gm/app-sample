@@ -64,3 +64,5 @@ group :test do
   gem "selenium-webdriver"
 end
 gem 'devise-i18n-views'
+gem "mini_magick"
+gem 'carrierwave', '~> 3.0'

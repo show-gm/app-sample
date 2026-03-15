@@ -10,9 +10,11 @@
 <h1>Your Recipes</h1>
 
 <%= link_to '新しいレシピを投稿する', new_recipe_path %> <% @recipes.each do |recipe| %>
-  <div>
+  <div> 
+    <p>内容: <%= recipe.content %></p>
     <h2><%= recipe.title %></h2>
-    <p>内容: <%= recipe.content %></p> <p>作成者ID: <%= recipe.user_id %></p>
+    <p>作成者: <%= recipe.user.name %></p>
+    <p>作成日時：<%= recipe.created_at.strftime('%Y年%m月%d日') %></p>
     <hr>
   </div>  
 <% end %>
@@ -21,10 +23,11 @@
   <p>まだレシピがありません</p>
 <% else %>  
   <% @recipes.each do |recipe| %>
-    <div>
-      <h2><%= recipe.title %></h2>
+    <div> 
       <p>内容: <%= recipe.content %></p>
-      <p>作成者ID: <%= recipe.user_id %></p>
+      <h2><%= recipe.title %></h2>
+      <p>作成者: <%= recipe.user.name %></p>
+      <p>作成日時：<%= recipe.created_at.strftime('%Y年%m月%d日') %></p>
       <hr>
     </div>
   <% end %>
