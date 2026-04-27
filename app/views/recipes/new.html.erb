@@ -1,6 +1,10 @@
 <h1>レシピ新規投稿</h1>
 
 <%= form_with model: @recipe, local: true do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    
   <div>
     <%= f.label :title, "タイトル" %><br>
     <%= f.text_field :title %>
@@ -12,6 +16,11 @@
   </div>
   
   <div>
+  <div>
+    <%= f.label :image, "料理の画像" %>
+    <%= f.file_field :image %>
+  </div>
+  <%# ------------------ %>
     <%= f.submit "登録" %>
   </div>
 <% end %>

@@ -26,6 +26,19 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  def edit
+    @recipe = Recipe.find(params[:id])
+   end
+ 
+   def update
+     @recipe = Recipe.find(params[:id])
+     if @recipe.update(recipe_params)
+       redirect_to request.referer
+     else
+       render :new
+     end
+   end
+
 
   def destroy
     recipe = Recipe.find(params[:id])
@@ -42,6 +55,6 @@ class RecipesController < ApplicationController
   
   def recipe_params
     # DBカラム名（:content）に合わせて修正。以前の誤った :ingredients, :instructions を修正します。
-    params.require(:recipe).permit(:title, :content) 
+    params.require(:recipe).permit(:title, :content, :image) 
   end
 end
