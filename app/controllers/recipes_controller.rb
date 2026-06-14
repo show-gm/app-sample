@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   
   def index
     # データベースからすべてのレシピを取得
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order(id: :desc)
   end
 
   def new
@@ -33,17 +33,20 @@ class RecipesController < ApplicationController
    def update
      @recipe = Recipe.find(params[:id])
      if @recipe.update(recipe_params)
-       redirect_to request.referer
+      redirect_to recipes_path, notice:
      else
-       render :new
+      render :edit, status: :unprocessable_entity
      end
    end
 
+   def show
+    @recipe = Recipe.find(params[:id])
+    end
 
   def destroy
     recipe = Recipe.find(params[:id])
     # 投稿者本人かチェック（セキュリティのため）
-    if recipe.user_id == current_user.id
+    if recipe.user_id == current_user&.id
       recipe.destroy
       redirect_to recipes_path, notice: "レシピを削除しました"
     else
@@ -53,7 +56,7 @@ class RecipesController < ApplicationController
 
   private
   
-  def recipe_params
+   def recipe_params
     # DBカラム名（:content）に合わせて修正。以前の誤った :ingredients, :instructions を修正します。
     params.require(:recipe).permit(:title, :content, :image) 
   end
