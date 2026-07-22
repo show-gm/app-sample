@@ -28,7 +28,7 @@ ja:
         updated_at: 更新日
       recipe:
         title: タイトル
-        content: 作り方（内容）
+        content: 必要な具材、料理手順
     models:
       user: ユーザー
       recipe: レシピ

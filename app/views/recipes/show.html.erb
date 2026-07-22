@@ -1,0 +1,23 @@
+<h1>レシピの詳細</h1>
+
+<div>
+  <strong>レシピタイトル</strong>
+  <p><%= @recipe.title %></p>
+</div>
+
+<div>
+  <strong>必要な具材と料理手順</strong>
+  <p><%= simple_format(@recipe.description) %></p>
+</div>
+
+<div>
+  <strong>料理にかかる時間（分）</strong>
+  <p><%= @recipe.content %> 分</p>
+</div>
+
+<hr>
+
+<!-- 編集画面へジャンプするリンク -->
+<p><%= link_to "編集する", edit_recipe_path(@recipe) %></p>
+
+<p><%= link_to "一覧に戻る", root_path %></p>

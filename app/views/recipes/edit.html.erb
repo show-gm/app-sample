@@ -2,48 +2,38 @@
 
 <%= form_with(model: @recipe, local: true) do |form| %>
 
-  <div>
-    <%= form.label :image, "料理の画像" %>  <%= form.file_field :image %>
+
+  <%= render 'shared/error_messages', object: form.object %>
+  <%# 📸 料理の画像 %>
+  <div style="margin-bottom: 15px;">
+    <%= form.label :image, "料理の画像" %><br>
+    <%= form.file_field :image %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :title, "レシピタイトル" %><br>
+    <%= form.text_field :title, style: "width: 100%; max-width: 200px;" %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :content, "必要な具材" %><br>
+    <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :description, "料理手順" %><br>
+    <%= form.text_area :description, rows: 5, style: "width: 100%; max-width: 200px;" %>
+  </div>
+
+
+  <div style="margin-bottom: 15px;">
+    <%= form.label :cooking_time, "料理にかかる時間（分）" %><br>
+    <%= form.number_field :cooking_time, style: "width: 100%; max-width: 200px;" %>
+  </div>
+
+  <%# 💾 更新ボタン %>
+  <div style="margin-top: 20px;">
+    <%= form.submit "更新する" %>
   </div>
 
 <% end %>
-
-<%= form_with(model: @recipe, local: true) do |form| %>
-    <div style="margin-bottom: 8px;">
-      <%= form.label :content, "レシピタイトル" %>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-      <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
-    </div>
-
-    <div style="margin-bottom: 8px;">
-      <%= form.label :content, "必要な具材" %>
-    </div>
-
-  
-    <div style="margin-bottom: 15px;">
-      <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
-    </div>
-    
-    <div style="margin-bottom: 8px;">
-      <%= form.label :content, "料理手順" %>
-    </div>
-
-  
-    <div style="margin-bottom: 15px;">
-      <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
-    </div>
-    
-    <div style="margin-bottom: 8px;">
-      <%= form.label :content, "料理にかかる時間" %>
-    </div>
-
-  
-    <div style="margin-bottom: 15px;">
-      <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
-    </div>
-    <div>
-      <%= form.submit "更新" %>
-    </div>
-  <% end %>

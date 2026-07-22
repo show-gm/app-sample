@@ -16,8 +16,8 @@
    <%= link_to "削除", recipe_path(recipe), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     
    <p><%= image_tag recipe.image.url if recipe.image? %></p>
-   <p>内容: <%= recipe.content %></p> 
-    <h2><a href=""><%= recipe.title %></a></h2>
+    
+    <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
     <p>作成者: <%= recipe.user.name %></p>
     <p>作成日時：<%= recipe.created_at.strftime('%Y年%m月%d日') %></p>
     <hr>
@@ -31,9 +31,9 @@
     <%= link_to "編集", edit_recipe_path(recipe) %> 
     <%= link_to "削除", recipe_path(recipe), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
     <div> 
-      <p>内容: <%= recipe.content %></p>
       
-      <h2><a href=""><%= recipe.title %></a></h2>
+      
+      <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
       <p>作成者: <%= recipe.user.name %></p>
       <p>作成日時：<%= recipe.created_at.strftime('%Y年%m月%d日') %></p>
       <hr> 
