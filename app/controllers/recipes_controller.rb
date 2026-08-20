@@ -5,8 +5,15 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create] 
   
   def index
-    # データベースからすべてのレシピを取得
     @recipes = Recipe.all.order(id: :desc)
+  end
+
+  def search
+    if params[:keyword].present?
+      @recipes = Recipe.where('title LIKE ?', "%#{params[:keyword]}%")
+    else
+      @recipes = Recipe.all.order(id: :desc)
+    end
   end
 
   def new
@@ -58,6 +65,6 @@ class RecipesController < ApplicationController
   
    def recipe_params
     # DBカラム名（:content）に合わせて修正。以前の誤った :ingredients, :instructions を修正します。
-    params.require(:recipe).permit(:title, :content, :image) 
+    params.require(:recipe).permit(:title, :ingredients, :description, :content, :image) 
   end
 end

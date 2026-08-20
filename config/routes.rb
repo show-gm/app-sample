@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :recipes do
+    collection do
+      get 'search'
+    end
+  end
+  
   devise_for :users
   resources :recipes 
   resources :recipes, only: [:create, :new, :edit, :update, :destroy, :show,]

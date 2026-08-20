@@ -6,8 +6,14 @@
 </div>
 
 <div>
-  <strong>必要な具材と料理手順</strong>
-  <p><%= simple_format(@recipe.description) %></p>
+  <h3>必要な具材</h3>
+<p><%= @recipe.ingredients %></p>
+</div>
+
+
+<div>
+  <h3>料理手順</h3>
+<p><%= @recipe.description %></p>
 </div>
 
 <div>

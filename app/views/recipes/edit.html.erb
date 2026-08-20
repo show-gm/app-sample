@@ -2,9 +2,9 @@
 
 <%= form_with(model: @recipe, local: true) do |form| %>
 
-
   <%= render 'shared/error_messages', object: form.object %>
-  <%# 📸 料理の画像 %>
+
+  <%# 📷 料理の画像 %>
   <div style="margin-bottom: 15px;">
     <%= form.label :image, "料理の画像" %><br>
     <%= form.file_field :image %>
@@ -15,20 +15,21 @@
     <%= form.text_field :title, style: "width: 100%; max-width: 200px;" %>
   </div>
 
-  <div style="margin-bottom: 15px;">
-    <%= form.label :content, "必要な具材" %><br>
-    <%= form.text_area :content, rows: 5, style: "width: 100%; max-width: 200px;" %>
-  </div>
 
-  <div style="margin-bottom: 15px;">
-    <%= form.label :description, "料理手順" %><br>
-    <%= form.text_area :description, rows: 5, style: "width: 100%; max-width: 200px;" %>
-  </div>
+  
+<div style="margin-bottom: 15px;">
+  <%= form.label :ingredients, "必要な具材" %><br>
+  <%= form.text_area :ingredients, rows: 5, style: "width: 100%; max-width: 200px;" %>
+</div>
 
 
+<div style="margin-bottom: 15px;">
+  <%= form.label :description, "料理手順" %><br>
+  <%= form.text_area :description, rows: 5, style: "width: 100%; max-width: 200px;" %>
+</div>
   <div style="margin-bottom: 15px;">
-    <%= form.label :cooking_time, "料理にかかる時間（分）" %><br>
-    <%= form.number_field :cooking_time, style: "width: 100%; max-width: 200px;" %>
+    <%= form.label :content, "料理にかかる時間（分）" %><br>
+    <%= form.number_field :content, style: "width: 100%; max-width: 200px;" %>
   </div>
 
   <%# 💾 更新ボタン %>
