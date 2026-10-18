@@ -22,6 +22,7 @@
 </div>
 
 <hr>
+<%= render "favorite_button", recipe: @recipe %>
 
 <!-- 編集画面へジャンプするリンク -->
 <p><%= link_to "編集する", edit_recipe_path(@recipe) %></p>

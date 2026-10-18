@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "favorite_button" do %>
+    <% if user_signed_in? %>
+      <% if recipe.favorited_by?(current_user) %>
+        <%= button_to "解除する", recipe_favorite_path(recipe), method: :delete %>
+      <% else %>
+        <%= button_to "登録する", recipe_favorite_path(recipe), method: :post %>
+      <% end %>
+    <% end %>
+  <% end %>

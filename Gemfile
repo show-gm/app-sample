@@ -66,3 +66,6 @@ end
 gem 'devise-i18n-views'
 gem "mini_magick"
 gem 'carrierwave', '~> 3.0'
+group :test do
+  gem "minitest", "~> 5.27"
+end
