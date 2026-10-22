@@ -1,3 +1,7 @@
+<%= form_with url: search_recipes_path, method: :get do |f| %>
+  <%= f.text_field :keyword, value: params[:keyword], placeholder: "レシピタイトルで検索" %>
+  <%= f.submit "検索する" %>
+<% end %>
 <h1>レシピの詳細</h1>
 
 <div>
@@ -27,4 +31,4 @@
 <!-- 編集画面へジャンプするリンク -->
 <p><%= link_to "編集する", edit_recipe_path(@recipe) %></p>
 
-<p><%= link_to "一覧に戻る", root_path %></p>
+<p><%= link_to "一覧に戻る", recipes_path %></p>

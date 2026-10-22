@@ -34,3 +34,4 @@
 /config/master.key
 # Ignore gems installed in vendor/bundle.
 /vendor/bundle
+/public/uploads

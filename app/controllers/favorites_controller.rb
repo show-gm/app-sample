@@ -12,6 +12,13 @@ class FavoritesController < ApplicationController
     favorite.destroy if favorite
   end
 
+  def index
+    @favorite_recipes = current_user.favorite_recipes
+    if params[:keyword].present?
+      @favorite_recipes = @favorite_recipes.where('title LIKE ?', "%#{params[:keyword]}%")
+    end
+  end
+  
   private
 
   def require_login

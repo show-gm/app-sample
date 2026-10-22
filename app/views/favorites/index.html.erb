@@ -1,0 +1,15 @@
+<h1>お気に入りレシピ</h1>
+<div style="margin-bottom: 20px;">
+  <%= form_with(url: my_favorites_path, local: true, method: :get) do |form| %>
+    <%= form.text_field :keyword, value: params[:keyword], placeholder: "レシピタイトルで検索" %>
+    <%= form.submit "検索する" %>
+  <% end %>
+</div>
+
+<% if @favorite_recipes.empty? %>
+  <p>お気に入りのレシピはまだありません</p>
+<% else %>
+  <% @favorite_recipes.each do |recipe| %>
+    <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
+  <% end %>
+<% end %>
